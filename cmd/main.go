@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/hisamura333/convertimage/convertimage"
+	"github.com/hisamura333/convertimage"
 )
 
 func main() {
