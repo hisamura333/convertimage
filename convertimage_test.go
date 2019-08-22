@@ -14,13 +14,13 @@ type testImage struct {
 func TestSuccess(t *testing.T) {
 
 	cases := []testImage{
-		testImage{"jpgToGif", "jpg", "gif", "../testdata/test.gif"},
-		testImage{"jpgToGif", "jpg", "gif", "../testdata/test.gif"},
-		testImage{"jpgToPng", "jpg", "png", "../testdata/test.png"},
-		testImage{"gifToJpg", "gif", "jpg", "../testdata/test.jpg"},
-		testImage{"gifToPng", "gif", "png", "../testdata/test.png"},
-		testImage{"pngToGif", "png", "gif", "../testdata/test.gif"},
-		testImage{"pngToJpg", "gif", "png", "../testdata/test.png"},
+		testImage{"jpgToGif", "jpg", "gif", "./testdata/test.gif"},
+		testImage{"jpgToGif", "jpg", "gif", "./testdata/test.gif"},
+		testImage{"jpgToPng", "jpg", "png", "./testdata/test.png"},
+		testImage{"gifToJpg", "gif", "jpg", "./testdata/test.jpg"},
+		testImage{"gifToPng", "gif", "png", "./testdata/test.png"},
+		testImage{"pngToGif", "png", "gif", "./testdata/test.gif"},
+		testImage{"pngToJpg", "gif", "png", "./testdata/test.png"},
 	}
 
 	for _, c := range cases {
@@ -32,7 +32,7 @@ func TestSuccess(t *testing.T) {
 
 func testSuccessConvert(t *testing.T, c testImage) {
 	t.Helper()
-	myflag := FlagOps{"../testdata", c.src, c.dest, false}
+	myflag := FlagOps{"./testdata", c.src, c.dest, false}
 	err := Convert(myflag)
 
 	if err != nil {
@@ -42,7 +42,7 @@ func testSuccessConvert(t *testing.T, c testImage) {
 
 func TestFail(t *testing.T) {
 	cases := []testImage{
-		testImage{"jpgToGif", "jpg", "img", "../testdata/test.img"},
+		testImage{"jpgToGif", "jpg", "img", "./testdata/test.img"},
 	}
 
 	for _, c := range cases {
@@ -55,7 +55,7 @@ func TestFail(t *testing.T) {
 
 func testFailConvert(t *testing.T, c testImage) {
 	t.Helper()
-	myflag := FlagOps{"../testdata", c.src, c.dest, false}
+	myflag := FlagOps{"./testdata", c.src, c.dest, false}
 	err := Convert(myflag)
 
 	if err == nil {
